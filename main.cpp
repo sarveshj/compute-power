@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cmath>
 
 //function prototypes
 
@@ -42,7 +43,11 @@ bool check_input(double base, double exponent){
 
 double compute_exp_val(double base, double exponent){
 
-	double val = 1 ;
+	double val = 1, actual_exponent = exponent ;
+
+	//account for negative exponent
+
+	exponent = abs(exponent);
 
 	// boundary condition check!!
 
@@ -62,7 +67,10 @@ double compute_exp_val(double base, double exponent){
 				val = val * base;
 		}
 
-		return val;
+		if (actual_exponent > 0) 
+			return val;
+		else
+			return 1/val;
 	}
 
 }
